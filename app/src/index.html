@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=" Neighborhood Map ">
+    <meta name="author" content="Sankar Nagarajan (sankarchn@outlook.com) ">
+    <title>Sankar's Neighbourhood</title>
+    <!-- Bootstrap Latest compiled and minified CSS -->
+    <!-- build:css css/vendor.min.css -->
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Overpass" rel="stylesheet">
+
+    <!-- endbuild -->
+    <!-- build:css css/styles.min.css -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- endbuild -->
+
+</head>
+<body class="container-fluid">
+<div class="page-header">
+    <h2>
+        <span data-bind="text: pgHeader"></span>
+        <span class='burgerbtn btn-toolbar pull-right'>
+            <button type="button" class="btn btn-default" data-bind="click : openList">
+                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+            </button>
+        </span>
+    </h2>
+</div>
+
+<main>
+    <section>
+        <div class="listcol" data-bind="style : { display : listShow }">
+            <div class="panel">
+                <div class='closebtn btn-toolbar pull-right'>
+                    <button type="button" class="btn btn-default  navbar-right" data-bind="click : closeList">
+                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="panel-heading">
+                    <div data-bind='if: providerFail'>
+                        <div data-bind='html: loadFail'></div>
+                    </div>
+                    <div data-bind='if: listCounter'>
+                        <div data-bind='html: loadSuccess'></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div data-bind='visible: listCounter'>
+                        <div class="form-group">
+                            <label for="filter-listings">Filter List</label>
+                            <input id="filter-listings" class="form-control" type="text"
+                                   data-bind="textInput: inputStr, disable: drawingMode, event : { change: inpChange }"
+                                   placeholder="Type text to match and press enter."/>
+                        </div>
+                        <div data-bind='if: showFiltResults'>
+                            <div data-bind="html: filtResult" class="filtresult"></div>
+                        </div>
+                        <ul data-bind="foreach: spItemList" class="list-group">
+                            <li data-bind="text: name, visible: isVisible, click: $parent.listClickfn, css: { 'list-group-item-warning' : clickStatus }"
+                                class="list-group-item"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="mapcol">
+            <div id="map"></div>
+        </div>
+    </section>
+
+</main>
+
+<!-- build:js js/vendor.min.js -->
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../node_modules/knockout/build/output/knockout-latest.debug.js"></script>
+<script src="../node_modules/underscore/underscore.js"></script>
+<!-- endbuild -->
+
+<!-- build:js js/nmap.min.js -->
+<script src="js/globals.js"></script>
+<script src="js/model/spots.js"></script>
+<script src="js/model/sample.js"></script>
+<script src="js/view_model/list_item.js"></script>
+<script src="js/view_model/list_view.js"></script>
+<script src="js/map/gmap.js"></script>
+<script src="js/model/fsquare.js"></script>
+<script src="js/app.js"></script>
+<!-- endbuild -->
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7SzzmFCamJ-Oz6s6L2nvFAz6Oy55KA4Y&libraries=geometry,drawing&v=3" onload="launch()" onerror="launchError()"></script>
+</body>
+</html>

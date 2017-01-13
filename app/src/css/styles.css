@@ -1,0 +1,123 @@
+html,
+body {
+    font-family: 'Overpass', sans-serif;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.page-header {
+    height: 8vh;
+    background-color: #cd7d7d;
+    color: wheat;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+}
+
+h2 {
+    margin: 0;
+}
+
+#map {
+    height: 89vh;
+}
+
+.panel-heading {
+    background-color: #3e6666;
+    color: white;
+}
+
+.list-group-item {
+    font-size: 1.3em;
+}
+
+.filtresult {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+#pano {
+    height: 200px;
+    width: 100%;
+}
+
+.mapcol {
+    display: inline-block;
+    height: 90vh;
+    margin: 0;
+}
+
+.listcol {
+    background-color: white;
+    height: 90vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    transition: 0.5s; /* 0.5 second transition effect to slide in */
+}
+
+/* Position the close button at top right corner*/
+.closebtn {
+    float: right !important;
+    color: white;
+}
+
+@media screen and (max-width: 450px) {
+    .listcol {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        display: none;
+        width: 80%;
+        z-index: 100 !important;
+    }
+
+    .mapcol {
+        width: 100%;
+        z-index: 0 !important;
+    }
+
+    .burgerbtn {
+        display: inline;
+    }
+}
+
+@media screen and (min-width: 451px) and (max-width: 768px) {
+    .listcol,
+    .closebtn {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        display: none;
+        width: 40%;
+        z-index: 100 !important;
+    }
+
+    .mapcol {
+        width: 100%;
+        z-index: 0 !important;
+    }
+
+    .burgerbtn,
+    .closebtn {
+        display: inline;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .listcol {
+        float: left;
+        width: 33%;
+        z-index: 0 !important;
+    }
+
+    .mapcol {
+        width: 66%;
+        z-index: 0 !important;
+    }
+
+    .burgerbtn,
+    .closebtn {
+        display: none;
+    }
+}
