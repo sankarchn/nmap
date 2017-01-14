@@ -10,6 +10,7 @@ requirements.
 This tool provides information on a few places in and around Chennai, India. The application makes use of 
 APIs provided by **Foursquare** and **Google** for gathering details on places and rendering them on a map. 
 The following features are implemented:
+
 * Auto fetch of latitude & longitude for the chosen city (Chennai) using Google Geocoding service
 * Querying **Foursquare** REST servers to fetch spots in Chennai for the following categories
   - outdoor, food, shopping, artEntertainment, travel.
@@ -50,10 +51,32 @@ The following features are implemented:
 * Foursquare REST APIs
 * Google Maps API
 * Google font
-* Gulp and assorted plugins for minifying, cache busting
+* Npm, Gulp and assorted plugins for fetching required modules, minifying, cache busting
+
+## Building and Lauching the App
+* The application uses Gulp and related plugins to build the components. 
+  The files are organized as below:
+  Top //Launch the app from here.
+   - app
+     - src //holds all the sources required to build
+         - css
+         - js
+         - index.html
+     - gulpfile.js
+     - package.json
+     - README.md
+   - css
+   - fonts
+   - js
+   - maps //sourcemaps
+   - index.html // Launch file
+   - README.md // copy of README.md 
+
+* Install the required modules typing `$ npm install` 
+* Type `$ gulp` at the command prompt. This will minify and add digests to the js and css files and  update the index.html accordingly.       
+* Launch a web server pointing to the top level directory. 
      
 ### Credits
 * [SnazzyMaps](https://snazzymaps.com) for the map style config.
 * Very useful Code snippets from the practice code provided along with Google Maps lessons.    
-     
- 
+
